@@ -1,0 +1,19 @@
+name: ecommerce-microservice-databases
+services:
+  products-db:
+    container_name: products-db
+    image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
+    env_file:
+      - ./Configs/products_db.env
+    ports:
+      - 1433:1433
+    restart: always
+
+  orders-db:
+    container_name: orders-db
+    image: mcr.microsoft.com/mssql/server:2022-CU14-ubuntu-22.04
+    env_file:
+      - ./Configs/orders_db.env
+    ports:
+      - 1434:1433
+    restart: always
