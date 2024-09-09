@@ -1,0 +1,23 @@
+﻿@page "/products"
+@inject HttpClient client
+@inject IConfiguration configuration
+<h3>Products</h3>
+
+
+
+@code {
+	private List<Product> ProductList = new List<Product>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		var productsConnectionString = configuration.GetSection("ConnectionStrings").GetValue<string>("ProductsConnectionString");
+
+		var productListFromApi = await client.GetAsync("");
+
+	}
+
+}
+
+
+
+
