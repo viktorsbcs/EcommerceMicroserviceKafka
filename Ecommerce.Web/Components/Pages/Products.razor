@@ -10,9 +10,11 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		var productsConnectionString = configuration.GetSection("ConnectionStrings").GetValue<string>("ProductsConnectionString");
+		var productsApi = configuration.GetSection("ConnectionStrings").GetValue<string>("ProductsApi");
 
-		var productListFromApi = await client.GetAsync("");
+		var productList = await client.GetFromJsonAsync<List<Product>>($"{productsApi}/Products");
+
+		await base.OnInitializedAsync();
 
 	}
 
